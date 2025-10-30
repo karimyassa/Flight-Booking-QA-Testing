@@ -1,0 +1,396 @@
+﻿Summary,Issue key,Issue Type,Project key,Project name,Project lead,Priority,Description
+Selecting flight → Passenger Details → Payment — system accepts script injection in the cardholder name field,AT-30,Bug,AT,Agile Travel,karim yassa,Highest,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Select a Card Type (e.g., Visa or MasterCard).
+# Enter a script tag (e.g., <script>alert('test')</script>) in the Cardholder Name field.
+# Enter valid Card Number and Expiry Date.
+# Click Pay Now.
+
+*Expected Results:*
+The system should sanitize inputs and display an error message preventing any script or code injection.
+
+*Actual Results:*
+The system accepts the script tag in the Cardholder Name field without displaying any validation error, though no script execution occurred."
+Selecting flight → Passenger Details → Payment — system accepts submission without entering card number or expiry date,AT-29,Bug,AT,Agile Travel,karim yassa,Highest,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Select a Card Type (e.g., Visa or MasterCard).
+# Leave both Card Number and Expiry Date fields empty.
+# Click Pay Now.
+
+*Expected Results:*
+The system should display an error message and prevent payment when the Card Number or Expiry Date fields are empty.
+
+*Actual Results:*
+The system accepts submission without validating that the Card Number and Expiry Date fields are empty."
+Selecting flight → Passenger Details → Payment — system accepts card number longer than 16 digits,AT-28,Bug,AT,Agile Travel,karim yassa,High,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Select a Card Type (e.g., Visa or MasterCard).
+# Enter a valid Cardholder Name and an invalid Card Number with more than 16 digits.
+# Enter a valid Expiry Date.
+# Click Pay Now.
+
+*Expected Results:*
+The system should validate the Card Number length and display an error message for inputs longer than 16 digits.
+
+*Actual Results:*
+The system accepts card numbers longer than 16 digits and proceeds without any validation error."
+Selecting flight → Passenger Details → Payment — system accepts card number shorter than 16 digits,AT-27,Bug,AT,Agile Travel,karim yassa,High,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Select a Card Type (e.g., Visa or MasterCard).
+# Enter a valid Cardholder Name and an invalid Card Number with fewer than 16 digits.
+# Enter a valid Expiry Date.
+# Click Pay Now.
+
+*Expected Results:*
+The system should validate the Card Number length and display an error message for inputs shorter than 16 digits.
+
+*Actual Results:*
+The system accepts card numbers shorter than 16 digits and proceeds without any validation error."
+Selecting flight → Passenger Details → Payment — system accepts payment with expired card date,AT-26,Bug,AT,Agile Travel,karim yassa,Highest,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Select a Card Type (e.g., Visa or MasterCard).
+# Enter a valid Cardholder Name and Card Number.
+# Select an Expiry Date in the past.
+# Click Pay Now.
+
+*Expected Results:*
+The system should display an error message and prevent payment when the card expiry date is in the past.
+
+*Actual Results:*
+The system accepts payment with an expired card date without displaying any validation error."
+Selecting flight → Passenger Details → Payment — system accepts payment when all fields are filled but no card type is selected,AT-25,Bug,AT,Agile Travel,karim yassa,Medium,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Enter valid Cardholder Name, Card Number, and Expiry Date, but do not select a Card Type.
+# Click Pay Now.
+
+*Expected Results:*
+The system should display an error message and prevent payment when the Card Type is not selected.
+
+*Actual Results:*
+The system accepts payment without validating the missing Card Type selection."
+Selecting flight → Passenger Details → Payment — system accepts payment with all fields empty,AT-24,Bug,AT,Agile Travel,karim yassa,Highest,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Leave all fields (Card Type, Cardholder Name, Card Number, Expiry Date) empty.
+# Click Pay Now.
+# 
+*Expected Results:*
+The system should display an error message and prevent payment when all fields are empty.
+
+*Actual Results:*
+The system proceeds without validation and accepts submission even when all fields are empty."
+Selecting flight → Passenger Details → Payment — system accepts special characters in the cardholder name field,AT-23,Bug,AT,Agile Travel,karim yassa,Highest,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Select a Card Type (e.g., Visa or MasterCard).
+# Enter a Cardholder Name containing special characters (e.g., John@Doe!).
+# Enter a valid Card Number and Expiry Date.
+# Click Pay Now.
+
+*Expected Results:*
+The system should display an error message and prevent submission when the Cardholder Name field contains special characters such as @, #, $, %, !.
+
+*Actual Results:*
+The system accepts special characters in the Cardholder Name field and proceeds without displaying any validation error."
+Selecting flight → Passenger Details → Payment — system accepts numeric characters in the cardholder name field,AT-22,Bug,AT,Agile Travel,karim yassa,Highest,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Select a Card Type (e.g., Visa or MasterCard).
+# Enter a Cardholder Name containing numeric characters (e.g., John123).
+# Enter a valid Card Number and Expiry Date.
+# Click Pay Now.
+
+*Expected Results:*
+The system should display an error message and prevent submission when the Cardholder Name field contains numbers.
+
+*Actual Results:*
+The system accepts numeric characters in the Cardholder Name field and proceeds without displaying any validation error."
+Selecting flight -> Passenger Details -> Payment -> system accepts Special characters in the card number field,AT-21,Bug,AT,Agile Travel,karim yassa,Highest,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Select a Card Type (e.g., Visa or MasterCard).
+# Enter a Card Number containing Special characters (e.g., 1234@#%^5678).
+# Enter valid details for the Cardholder Name and Expiry Date.
+# Click Pay Now.
+
+*Expected Results:*
+The system should display an error message and prevent submission when the Card Number field contains Special characters.
+
+*Actual Results:*
+The system accepts Special characters in the Card Number field and proceeds without displaying any validation error."
+Selecting flight -> Passenger Details -> Payment -> system accepts alphabetic characters in the card number field,AT-20,Bug,AT,Agile Travel,karim yassa,Highest,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Select a Card Type (e.g., Visa or MasterCard).
+# Enter a Card Number containing alphabetic characters (e.g., 1234abcd5678).
+# Enter valid details for the Cardholder Name and Expiry Date.
+# Click Pay Now.
+
+*Expected Results:*
+The system should display an error message and prevent submission when the Card Number field contains alphabetic characters.
+
+*Actual Results:*
+The system accepts alphabetic characters in the Card Number field and proceeds without displaying any validation error."
+Selecting Flight -> Passenger Details -> Payment -> System accepts spaces as valid input in cardholder name and card number fields,AT-19,Bug,AT,Agile Travel,karim yassa,Highest,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type
+# Choose valid origin, destination, and flight details.
+# Proceed through the Passenger Details page and continue to the Payment section.
+# Select a Card Type (e.g., Visa or MasterCard).
+# Enter only spaces in the Cardholder Name and Card Number fields
+# Select a valid Expiry Date.
+# Click Pay Now.
+
+*Expected Results:*
+The system should display an error message and prevent submission when only spaces are entered in the Cardholder Name or Card Number fields.
+
+*Actual Results:*
+The system accepts spaces as valid input in the Cardholder Name and Card Number fields and proceeds without displaying any validation error."
+selecting flight -> Passenger details -> System does not trim leading and trailing spaces in passenger name fields,AT-18,Bug,AT,Agile Travel,karim yassa,Low,"*Steps to Reproduce:*
+Login to the application.
+Select Return as the trip type.
+Choose valid origin, destination, and flight details.
+Proceed to the Passenger Details page.
+Enter a valid name with leading and trailing spaces (e.g., "" John "" or "" Smith "").
+Click Next
+
+*Expected Results:*
+The system should automatically trim any leading or trailing spaces before validation or submission.
+
+*Actual Results:*
+The system accepts names with leading and trailing spaces without trimming them, allowing the extra spaces to be stored or processed as part of the input."
+selecting flight -> Passenger details -> System accepts special characters as valid input in passenger details fields,AT-17,Bug,AT,Agile Travel,karim yassa,Low,"*Steps to Reproduce*
+#login to application.
+#Select Return as the trip type.
+#Choose valid origin, destination, and flight details.
+#Proceed to the Passenger Details page.
+#Enter Special characters in name fields.
+#Click next
+
+Expected Results
+error displayed stating system doesn't accept special characters in name fields
+
+Actual Results
+
+System accepts name with Special characters in it"
+Selecting Flight -> Passenger Details -> system accepts numeric characters in name fields ,AT-16,Bug,AT,Agile Travel,karim yassa,Low,"*Steps to Reproduce*
+
+# login to application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed to the Passenger Details page.
+# Enter number characters in name fields.
+# Click next
+
+*Expected Results*
+error displayed stating system doesn't accept numeric characters in name fields
+
+*Actual Results*
+
+System accepts name with numeric characters in it"
+selecting flight -> Passenger details -> System accepts script tags as input in passenger name fields,AT-15,Bug,AT,Agile Travel,karim yassa,Highest,"*Steps to Reproduce*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed to the Passenger Details page.
+# Enter a script tag (e.g., <script>alert('test')</script>) in the First Name or Last Name field.
+# Click Next to continue.
+
+*Expected Results:*
+The system should sanitize the input and display an error message preventing any script or code injection.
+
+*Actual Results:*
+The system accepts the script tag as valid input and continues the process without displaying any validation error, although no script execution occurred."
+selecting flight -> Passenger details -> System accepts name inputs exceeding the allowed character limit,AT-14,Bug,AT,Agile Travel,karim yassa,Low,"*Steps to reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed to the Passenger Details page.
+# Enter a name in the First Name and/or Last Name fields with more characters than the allowed limit (e.g., 60+ characters).
+# Click Next to continue.
+
+*Expected Results:*
+The system should display an error message and restrict input to the defined character limit (e.g., maximum 50 characters).
+
+*Actual Results:*
+The system accepts and processes names that exceed the expected character limit without displaying any validation error."
+selecting flight -> Passenger details -> System accepts empty First Name ,AT-13,Bug,AT,Agile Travel,karim yassa,Low,"*Steps to Reproduce:*
+
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed to the Passenger Details page.
+# Leave the First Name field empty.
+# Enter a valid value in the Last Name field.
+# Click Next to continue.
+
+*Expected Results:*
+
+The system should display an error message and prevent submission when the First Name field is empty.
+
+*Actual Results:*
+
+The system accepts the input and allows the user to proceed even though the First Name field is left empty."
+selecting flight -> Passenger details -> System allows submission with empty passenger details fields,AT-12,Bug,AT,Agile Travel,karim yassa,High,"*Steps to Reproduce:
+*# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed to the Passenger Details page.
+# Leave both First Name and Last Name fields empty.
+# Click Next to continue.
+
+*Expected Results:
+*The system should display an error message and prevent submission when required fields are left empty.
+
+*Actual Results:
+*The system allows the user to proceed to the next step even when both First Name and Last Name fields are empty."
+selecting flight -> Passenger details -> System accepts spaces as valid input in passenger details fields,AT-11,Bug,AT,Agile Travel,karim yassa,Medium,"*Steps to Reproduce:*
+# Login to the application.
+# Select Return as the trip type.
+# Choose valid origin, destination, and flight details.
+# Proceed to the Passenger Details page.
+# Enter only spaces in the First Name and Last Name fields.
+
+Click Next to continue.
+
+*Expected Results:*
+The system should display an error message and prevent submission when fields contain only spaces.
+
+*Actual Results:*
+The system accepts spaces as valid input in the First Name and Last Name fields and allows the user to continue without validation."
+Selecting Flight -> System does not reset or revalidate dates when switching from “Return” to “One Way”,AT-10,Bug,AT,Agile Travel,karim yassa,Low,"
+*Steps to Reproduce:*
+
+1. Login to the application.
+2. Select **Return** as the trip type.
+3. Choose **Departure** and **Return** dates.
+4. Switch the trip type from **Return** to **One Way**.
+5. Observe the date fields.
+
+*Expected Results:*
+When switching to **One Way**, the system should either:
+Reset the **Return Date** field, or
+Revalidate and hide the **Return Date** input to prevent inconsistent data.
+
+*Actual Results:*
+The system does not reset or revalidate the dates after switching to *One Way*, allowing the *Return Date*
+value to persist even though it should no longer apply.
+
+"
+Selecting Flight -> System allows selecting the same city for both origin and destination,AT-9,Bug,AT,Agile Travel,karim yassa,High,"*Steps to Reproduce*
+1-Login to the application.
+2-Select Return as the trip type.
+3-In the From field, select New York.
+4-In the To field, select New York.
+5-Select a departure date.
+6-Select a return date.
+7-Choose a flight and click Continue.
+
+*Expected Results:*
+The system should display an error message indicating that the origin and destination cannot be the same.
+
+*Actual Results:*
+The system allows selecting the same city for both origin and destination, and continues the booking process without any error."
+Selecting Flight -> no error message displayed when return date is in the past,AT-8,Bug,AT,Agile Travel,karim yassa,High,"steps to reproduce
+1-login
+2-select return trip
+3-select origin and destination
+4-select departure date
+5-select return date in the past 
+6-select flight
+7-continue
+
+expected results
+error message stating return date is the past
+
+actual results
+no error message is displayed and system continues booking
+
+"
+Selecting Flight -> No error when return date is before departure date,AT-6,Bug,AT,Agile Travel,karim yassa,High,"*steps to reproduce*
+1-login
+2-select return trip
+3-select origin and destination
+4-select departure date 
+5-select return date before departure date
+6-choose flight and continue 
+
+*expected results*
+error message stating that the return date is before departure or dates before departure is automatically disabled
+
+*actual results*
+no error message and date is selected and system continues booking"
+Selecting Flight -> No error message when departure date is not selected,AT-5,Bug,AT,Agile Travel,karim yassa,High,"*Steps to reproduce*
+1-login
+2-select one way trip
+3-select origin and destination
+4-leave departure date not selected
+5-click continue
+
+*expected results*
+error message displayed stating that no departure date is selected
+
+*actual results*
+system continues booking without displaying any error"
+Selecting Flight -> no error message when departure date is in the past ,AT-4,Bug,AT,Agile Travel,karim yassa,High,"*steps to reproduce*
+1- login
+2- select one way 
+3- select origin and destination 
+4- select a date in the past 
+5- click continue
+
+*expected results*
+error message is displayed stating the date is in the past or the dates in the past is disabled
+
+*actual results*
+no error message is displayed and system continues booking with past date
+
+"
+Selecting Flight -> No error message when origin and destination is not selected and clicking continue ,AT-3,Bug,AT,Agile Travel,karim yassa,Highest,"*steps to reproduce*
+1- login
+2- don't select origin and destination 
+3- click continue
+
+*expected results*
+comprehensive error message that origin and destination is not selected
+
+*actual results*
+no error message is displayed and continue button works"
+Selecting Flight -> continue button is always enabled even with the required fields not Selected ,AT-2,Bug,AT,Agile Travel,karim yassa,Low,"*steps to reproduce*
+1- login
+2- leave required fields not selected
+3- click continue
+
+*expected results*
+continue button is disabled
+
+*actual results*
+continue button is enabled and clickable"
